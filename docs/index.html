@@ -157,8 +157,16 @@ window.Quarto = {
   <li><a href="#використані-змінні" id="toc-використані-змінні" class="nav-link" data-scroll-target="#використані-змінні">Використані змінні</a></li>
   </ul></li>
   <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data-cleaning</a></li>
-  <li><a href="#проведення-тестів" id="toc-проведення-тестів" class="nav-link" data-scroll-target="#проведення-тестів">Проведення тестів</a></li>
+  <li><a href="#проведення-тестів" id="toc-проведення-тестів" class="nav-link" data-scroll-target="#проведення-тестів">Проведення тестів</a>
+  <ul class="collapse">
+  <li><a href="#тест-на-кореляцію-спірмена" id="toc-тест-на-кореляцію-спірмена" class="nav-link" data-scroll-target="#тест-на-кореляцію-спірмена">Тест на кореляцію Спірмена:</a></li>
+  <li><a href="#fishers-z-test" id="toc-fishers-z-test" class="nav-link" data-scroll-target="#fishers-z-test">Fisher’s Z-test</a></li>
+  </ul></li>
   <li><a href="#візуалізація" id="toc-візуалізація" class="nav-link" data-scroll-target="#візуалізація">Візуалізація</a></li>
+  <li><a href="#висновки" id="toc-висновки" class="nav-link" data-scroll-target="#висновки">Висновки</a>
+  <ul class="collapse">
+  <li><a href="#обмеження-дослідження" id="toc-обмеження-дослідження" class="nav-link" data-scroll-target="#обмеження-дослідження">Обмеження дослідження</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#датасет-2-portuguese-students-math-performance" id="toc-датасет-2-portuguese-students-math-performance" class="nav-link" data-scroll-target="#датасет-2-portuguese-students-math-performance">Датасет 2: Portuguese Students’ Math Performance</a>
   <ul class="collapse">
@@ -170,6 +178,7 @@ window.Quarto = {
   <li><a href="#використані-змінні-1" id="toc-використані-змінні-1" class="nav-link" data-scroll-target="#використані-змінні-1">Використані змінні</a></li>
   </ul></li>
   <li><a href="#статистичні-тести-і-візуалізація" id="toc-статистичні-тести-і-візуалізація" class="nav-link" data-scroll-target="#статистичні-тести-і-візуалізація">Статистичні тести і візуалізація</a></li>
+  <li><a href="#підсумок" id="toc-підсумок" class="nav-link" data-scroll-target="#підсумок">Підсумок</a></li>
   </ul></li>
   <li><a href="#датасет-3-student-depression-dataset" id="toc-датасет-3-student-depression-dataset" class="nav-link" data-scroll-target="#датасет-3-student-depression-dataset">Датасет 3: Student Depression Dataset</a>
   <ul class="collapse">
@@ -186,7 +195,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#проведення-t-тесту" id="toc-проведення-t-тесту" class="nav-link" data-scroll-target="#проведення-t-тесту">Проведення t-тесту</a></li>
   </ul></li>
-  <li><a href="#висновки" id="toc-висновки" class="nav-link" data-scroll-target="#висновки">Висновки</a>
+  <li><a href="#висновки-1" id="toc-висновки-1" class="nav-link" data-scroll-target="#висновки-1">Висновки</a>
   <ul class="collapse">
   <li><a href="#можливі-обмеження" id="toc-можливі-обмеження" class="nav-link" data-scroll-target="#можливі-обмеження">Можливі обмеження</a></li>
   </ul></li>
@@ -242,12 +251,12 @@ window.Quarto = {
 <ul>
 <li>~7M записів</li>
 <li>46 змінних</li>
-<li>Джерело: <a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents">посилання на Kaggle</a></li>
+<li>Джерело: <a href="https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents">Kaggle</a></li>
 <li>Автор: Sobhan Moosavi</li>
 </ul>
 </div>
 </div>
-<p>Вельми цікавий датасет, у якому зібрана інформарція щодо великої кількості автомобільних пригод у Сполучених Штатах у період 2016 - 2023 роки. Наявна велика кількість змінних, більшість з них несуть як числову інформацію (н. Visibility), так і булеву (н. Traffic_Signal) чи категоріальну(н. State).</p>
+<p>Вельми цікавий датасет, у якому зібрана інформарція щодо великої кількості автотрощ у Сполучених Штатах у період 2016 - 2023 роки. Наявна велика кількість змінних, більшість з них несуть як числову інформацію (н. <code>Visibility</code>), так і булеву (н. <code>Traffic_Signal</code>) чи категоріальну(н. <code>State</code>).</p>
 </section>
 <section id="research-question" class="level2">
 <h2 class="anchored" data-anchor-id="research-question">Research question</h2>
@@ -288,7 +297,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="використані-змінні">Використані змінні</h3>
 <p>Для відповіді на це запитання я буду використовувати дані з наступних колонок:</p>
 <ul>
-<li><code>Humidity</code>: Кількісна змінна, що показує вологість (<span class="math inline">\(%\)</span>) в місцевості, де сталося ДТП.</li>
+<li><code>Humidity</code>: Кількісна змінна, що показує вологість (<span class="math inline">\(\%\)</span>) в місцевості, де сталося ДТП.</li>
 <li><code>State</code>: Категоріальна змінна, по якій ми будемо групувати ДТП.</li>
 <li><code>Accidents_number</code>: Кількісна змінна, яка буде створена для підрахунку кількості ДТП для кожного рівня вологості у кожному штаті.</li>
 </ul>
@@ -298,7 +307,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="data-cleaning">Data-cleaning</h2>
 <p>Спершу, виконаємо рутину:</p>
 <ul>
-<li>Підключимо необхідні бібіліотеки. Звісно, я використовуватиму tidyverse для візуалізації, а також vroom для оптимізованого завантаження датасету у R.</li>
+<li>Підключимо необхідні бібіліотеки. Звісно, я використовуватиму <code>tidyverse</code> для візуалізації, а також <code>vroom</code> для оптимізованого завантаження датасету у R.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -364,13 +373,15 @@ window.Quarto = {
 <p>Я зупинився на такій комбінації статистичних тестів:</p>
 <ul>
 <li><p><strong>Тест Спірмена</strong>. Я хочу провести два тести на пошук кореляції між к-стю ДТП та рівнем вологості окремо для кожного штату. Поглянемо, чи взгалі є якийсь зв’язок між цими змінними.</p></li>
-<li><p><strong>T-тест</strong>.</p></li>
+<li><p><strong>Fisher’s Z-test</strong>. Після того, як я знайду значення кореляції для двох штатів, мені необхідно буде порівняти їх та визнати/відхилити значущу різницію між ними. Як мене запевнив <a href="http://vassarstats.net/rdiff.html">цей сайт</a>, я можу зробити це за допомогою z-тесту Фішера. Чесно кажучи, не дуже розумію як він працює “під капотом”, проте він робить, що мені треба.</p></li>
 </ul>
-<p>Проводимо тест на кореляцію Спірмена:</p>
+<section id="тест-на-кореляцію-спірмена" class="level3">
+<h3 class="anchored" data-anchor-id="тест-на-кореляцію-спірмена">Тест на кореляцію Спірмена:</h3>
 <ul>
-<li><code>H0</code>: Кореляції між кількістю ДТП та рівнем вологості <strong>немає</strong>.</li>
-<li><code>H0</code>: Є <strong>значущий зв’язок</strong> між кількістю ДТП та рівнем вологості. **Гіпотези будуть перевірятися окремо для двох штатів.*</li>
+<li><code>H0</code>: Кореляції між кількістю ДТП та рівнем вологості <strong>немає</strong> (<code>r == 0</code>).</li>
+<li><code>H1</code>: Є <strong>зв’язок</strong> між кількістю ДТП та рівнем вологості (<code>r != 0</code>).</li>
 </ul>
+<p><em>Гіпотези будуть перевірятися окремо для двох штатів.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>crashes_summary <span class="ot">&lt;-</span> crashes_tbl_balanced <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(State, Humidity) <span class="sc">%&gt;%</span></span>
@@ -419,6 +430,39 @@ window.Quarto = {
 <ul>
 <li>Значення кореляції у Флориді є вищим, ніж у Нью-Йорку: Тобто, зв’язок у штаті сонячного сяйва прослідковується краще, ніж у Нью-Йорку.</li>
 </ul>
+<p>А тепер перевіримо, чи є статистично значуща різниця між двома штатами.</p>
+</section>
+<section id="fishers-z-test" class="level3">
+<h3 class="anchored" data-anchor-id="fishers-z-test">Fisher’s Z-test</h3>
+<ul>
+<li>Порахуємо розмір вибірок:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>n_FL <span class="ot">&lt;-</span> crashes_summary <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"FL"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>n_NY <span class="ot">&lt;-</span> crashes_summary <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"NY"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>r_FL <span class="ot">&lt;-</span> cor_FL<span class="sc">$</span>estimate</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>r_NY <span class="ot">&lt;-</span> cor_NY<span class="sc">$</span>estimate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>У нас є все для провдення z-тесту Фішера:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>meow <span class="ot">&lt;-</span> psych<span class="sc">::</span><span class="fu">r.test</span>(<span class="at">n =</span> n_FL, <span class="at">r12 =</span> r_FL, <span class="at">n2 =</span> n_NY, <span class="at">r34 =</span> r_NY)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Використав функцію зі сторонньої бібліотеки для полегшення синтаксису</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>▪️ P-value: 0.3481739</code></pre>
+</div>
+</div>
+<p>Отримане <code>p-value</code> є значно вищим за <span class="math inline">\(0.05\)</span>, отже у нас <strong>не має достатньо підстав</strong>, аби відкинути H0-гіпотезу.</p>
+</section>
 </section>
 <section id="візуалізація" class="level2">
 <h2 class="anchored" data-anchor-id="візуалізація">Візуалізація</h2>
@@ -426,12 +470,26 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Я вирішив використати візуалізацію за допомогою <strong>лінійної регресії</strong>, аби показати, що зв’язок дійсно присутній.</p>
+<p>Я вирішив використати візуалізацію за допомогою <strong>лінійної регресії</strong>, аби показати, що зв’язок між кількістю автотрощ та рівнем вологості дійсно присутній в обох штатах та підвердити попередні висновки тестів на кореляцію.</p>
+</section>
+<section id="висновки" class="level2">
+<h2 class="anchored" data-anchor-id="висновки">Висновки</h2>
+<ul>
+<li><p>Кореляція між рівнем вологості та кількістю ДТП є статистично значущою в обох штатах. При тому, у нас немає жодної інформації щодо того, чи дійсно рівень вологості впливає на кількість автротощ, чи цей зв’язок викликаний іншим, зовнішнім в рамках дослідження, фактором.</p></li>
+<li><p>Z-тест Фішера показав, що значущої різниці між кореляціями у Нью-Йорку та Флориді <strong>немає</strong>. Отже, можна зробити висновок, що в обох штатах вологість пов’язана з кількістю автротрощ приблизно на одному рівні.</p></li>
+</ul>
+<section id="обмеження-дослідження" class="level3">
+<h3 class="anchored" data-anchor-id="обмеження-дослідження">Обмеження дослідження</h3>
+<ul>
+<li><strong>Кореляція не показує причинно-наслідковий зв’язок</strong>. Згадував це не один раз вже, але не зайвим буде :)</li>
+<li><strong>Дані за 2019 рік</strong>. У дослідженні я зробив фокус лише на одному році. Можливо, якщо взяти ширший період, результати б відрізнялися.</li>
+</ul>
+</section>
 </section>
 </section>
 <section id="датасет-2-portuguese-students-math-performance" class="level1">
@@ -457,28 +515,35 @@ window.Quarto = {
 </div>
 </div>
 <p>Насправді, пошук датасету виявився доволі складним завданням порівняно з іншими частинами проєкту xD. Однак цей заповітний датасет я знайшла випадково, приділяючи увагу ключовим словам у назві – “Student Performance”.</p>
-<p>Загалом датасет зібрав у собі шляхом опитування бали з математики наприкінці кожного з “триместрів” учнів з двох португальських шкіл, а саме Gabriel Pereira та Mousinho da Silveira, 2008-го року, розглядаючи успішність у контексті персональної (і не лише) оцінки багатьох “зовнішніх” факторів: к-сті вільного часу, участі в позакласових активностях, к-сті прогулів та ін. Усі змінні представлені за допомогою різних типів даних і є як кількісними (e.g.&nbsp;age, absences), так і категоріальними (e.g.&nbsp;address, famsize).</p>
+<p>Загалом датасет зібрав у собі шляхом опитування бали з математики наприкінці кожного з “триместрів” учнів з двох португальських шкіл, а саме Gabriel Pereira та Mousinho da Silveira, 2008-го року, розглядаючи успішність у контексті персональної (і не лише) оцінки багатьох “зовнішніх” факторів: к-сті вільного часу, участі в позакласових активностях, к-сті прогулів та ін. Усі змінні представлені за допомогою різних типів даних і є як кількісними (e.g.&nbsp;<code>age</code>, <code>absences</code>), так і категоріальними (e.g.&nbsp;<code>address</code>, <code>famsize</code>).</p>
 </section>
 <section id="research-question-1" class="level2">
 <h2 class="anchored" data-anchor-id="research-question-1">Research question</h2>
 <p>Тож дослідницьке питання звучить так:</p>
 <blockquote class="blockquote">
-<p>Чи відрізняється в середньому кількість вільного часу й спосіб його проведення в старшокласників різної статі та як це впливає на їхню успішність з математики?</p>
+<p><strong>Чи відрізняється в середньому кількість вільного часу й спосіб його проведення в старшокласників різної статі та як це впливає на їхню успішність з математики?</strong></p>
 </blockquote>
 <section id="чому-це-питання-важливе-1" class="level3">
 <h3 class="anchored" data-anchor-id="чому-це-питання-важливе-1">Чому це питання важливе?</h3>
-<p>Зниження рівня знань з математики – загальноєвропейська тендеція, що негативно впливає на інноваційний потенціал у майбутньому та обмежує доступ учнів до багатьох інших дисциплін, які будуються на засадах специфічної логіки чи потребують дотичних знань. Це підтверджують, наприклад, глобальні</p>
+<p>Зниження рівня знань з математики – загальноєвропейська тендеція, що негативно впливає на інноваційний потенціал у майбутньому та обмежує доступ учнів до багатьох інших дисциплін, які будуються на засадах специфічної логіки чи потребують дотичних знань. Це підтверджують глобальні дослідження, як-от PISA.</p>
 <p>Попри економічне та соціо-культурне розмаїття Європи, впливи на освіту та поведінкові патерни серед підлітків лишаються консистентними, а дані, зібрані в Португалії, котра лишається однією не з провідних країн з боку шкільної освіти, можуть слугувати чудовою моделлю для дослідження та покращення освітніх процесів у Європі, зокрема й в Україні.</p>
 </section>
 <section id="формулювання-гіпотез-1" class="level3">
 <h3 class="anchored" data-anchor-id="формулювання-гіпотез-1">Формулювання гіпотез</h3>
+<p>Оскільки дослідницьке питання доволі комплексне, то його необхідно було розділити на атомарні частинки задля створення гіпотез. Тому спочатку погляньмо, чи є кореляція між кількістю вільного часу та фінальною оцінкою з математики:</p>
 <ul>
-<li><p>H0: Суттєвої різниці між тим, скільки в середньому вільного часу мають хлопці та дівчата, немає.</p></li>
-<li><p>H1: Хлопці мають у середньому більше вільного часу.</p></li>
-<li><p>H0: Суттєвої різниці між тим, скільки в середньому гуляють хлопці й дівчата, немає.</p></li>
-<li><p>H1: Хлопці в середньому гуляють більше.</p></li>
-<li><p>H0: Кореляції між кількістю вільного часу та фінальними оцінками з математики немає, тобто дорівнює нулю.</p></li>
-<li><p>H1: Кореляція між кількістю вільного часу та фінальними оцінками з математики не дорівнює нулю.</p></li>
+<li><code>H0</code>: Кореляції між кількістю вільного часу та фінальними оцінками з математики <strong>немає</strong>, тобто дорівнює нулю.</li>
+<li><code>H1</code>: Кореляція між кількістю вільного часу та фінальними оцінками з математики <strong>не дорівнює нулю</strong>.</li>
+</ul>
+<p>Далі перевірмо гіпотезу щодо середньої кількості вільного часу в старшокласників різної статі:</p>
+<ul>
+<li><code>H0</code>: Середня кількість вільного часу в старшокласників різної статі – <strong>однакова</strong>.</li>
+<li><code>H1</code>: Середня кількість вільного часу в хлопців-старшокласників – <strong>більша</strong></li>
+</ul>
+<p>І наостанок погляньмо, чи є різниця в середній кількості прогулянок:</p>
+<ul>
+<li><code>H0</code>: Середня кількість прогулянок у старшокласників різної статі – <strong>однакова</strong>.</li>
+<li><code>H1</code>: Середня кількість прогулянок у хлопців-старшокласників – <strong>більша</strong>.</li>
 </ul>
 </section>
 <section id="використані-змінні-1" class="level3">
@@ -493,93 +558,13 @@ window.Quarto = {
 </section>
 <section id="статистичні-тести-і-візуалізація" class="level2">
 <h2 class="anchored" data-anchor-id="статистичні-тести-і-візуалізація">Статистичні тести і візуалізація</h2>
+<p>Для доведення або ж відхилення своїх гіпотез я обрала тест на кореляцію Спірмена та t-тест, оскільки стандартне відхилення генеральної сукупності – невідоме, а вибірка достатньо велика, аби не підтверджувати нормальність даних.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">'student-mat.csv'</span>, <span class="at">delim =</span> <span class="st">';'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>freetime[df<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"M"</span>], df<span class="sc">$</span>G3[df<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"M"</span>], <span class="at">method=</span> <span class="st">'spearman'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Spearman's rank correlation rho
-
-data:  df$freetime[df$sex == "M"] and df$G3[df$sex == "M"]
-S = 1123731, p-value = 0.6726
-alternative hypothesis: true rho is not equal to 0
-sample estimates:
-        rho 
--0.03110081 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>freetime[df<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"F"</span>], df<span class="sc">$</span>G3[df<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"F"</span>], <span class="at">method=</span> <span class="st">'spearman'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Spearman's rank correlation rho
-
-data:  df$freetime[df$sex == "F"] and df$G3[df$sex == "F"]
-S = 1534609, p-value = 0.7392
-alternative hypothesis: true rho is not equal to 0
-sample estimates:
-        rho 
--0.02322019 </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(freetime <span class="sc">~</span> sex, <span class="at">data =</span> df, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  freetime by sex
-t = -4.8581, df = 382.3, p-value = 1.732e-06
-alternative hypothesis: true difference in means between group F and group M is not equal to 0
-95 percent confidence interval:
- -0.6700755 -0.2839558
-sample estimates:
-mean in group F mean in group M 
-       3.009615        3.486631 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(goout <span class="sc">~</span> sex, <span class="at">data =</span> df, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  goout by sex
-t = -1.5057, df = 384.64, p-value = 0.133
-alternative hypothesis: true difference in means between group F and group M is not equal to 0
-95 percent confidence interval:
- -0.38971787  0.05168825
-sample estimates:
-mean in group F mean in group M 
-       3.028846        3.197861 </code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Спершу, звісно, завантажую датасет, з делімітером якого був сюрприз, оскільки csv виявилося не "comma separated values", а "semicolon separated values" :)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">'student-mat.csv'</span>, <span class="at">delim =</span> <span class="st">';'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -590,34 +575,111 @@ mean in group F mean in group M
 </div>
 </div>
 </div>
+<p>Невеличка візуалізація вибірки, з якою я працюватиму: оцінка вільного часу хлопцями та дівчатами по 5-бальній шкалі.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Dalc <span class="sc">~</span> sex, <span class="at">data =</span> df, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  Dalc by sex
-t = -5.3639, df = 282.84, p-value = 1.696e-07
-alternative hypothesis: true difference in means between group F and group M is not equal to 0
-95 percent confidence interval:
- -0.6531562 -0.3024690
-sample estimates:
-mean in group F mean in group M 
-       1.254808        1.732620 </code></pre>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Перевіряю кореляцію між вільним часом та фінальними оцінками з математики в хлопців,</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>freetime_m_cor <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(df<span class="sc">$</span>freetime[df<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"M"</span>], df<span class="sc">$</span>G3[df<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"M"</span>], <span class="at">method=</span> <span class="st">'spearman'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># а потім у дівчат,</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>freetime_f_cor <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(df<span class="sc">$</span>freetime[df<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"F"</span>], df<span class="sc">$</span>G3[df<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"F"</span>], <span class="at">method=</span> <span class="st">'spearman'</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># і наостанок подивимося все ж на загальну картинку</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>freetime_cor <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(df<span class="sc">$</span>freetime, df<span class="sc">$</span>G3, <span class="at">method=</span> <span class="st">'spearman'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<p>Для хлопців</p>
+<ul>
+<li>Значення кореляції Спірмена: -0.03110080815116095</li>
+<li>p-value: 0.6726252749692666</li>
+</ul>
+<p>Для дівчат</p>
+<ul>
+<li>Значення кореляції Спірмена: -0.023220193176417853</li>
+<li>p-value: 0.7391998361352743</li>
+</ul>
+<p>Для усієї вибірки</p>
+<ul>
+<li>Значення кореляції Спірмена: -0.004993740953811286</li>
+<li>p-value: 0.9211901023094031</li>
+</ul>
+<p>Тож дійсно, певна невелика негативна кореляція для нашої вибірки існує, але навіть для неї ця кореляція доволі мала, а <code>p-value</code>, що виявилося значно більшим за <span class="math inline">\(5\%\)</span>, свідчить про те, що наявність цієї невеличкої негативної кореляції не є статистично значущою: ми не можемо стверджувати, що справжня кореляція генеральної вибірки не дорівнює нулю, тож ми не можемо відхилити нульову гіпотезу.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Перевірмо чи є різниця між середньою кількістю вільного часу між хлопцями та дівчатами</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>freetime_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(freetime <span class="sc">~</span> sex, <span class="at">data =</span> df, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Тож наша вибірка має такі середні значення кількості вільного часу</p>
+<ul>
+<li>У дівчат: 3.009615</li>
+<li>У хлопців: 3.486631</li>
+</ul>
+<p>Та <code>p-value</code>: 1.732e-06</p>
+<p>Що свідчить про статистичну значимість різниці між середніми: ми можемо відхилити нульову гіпотезу, тобто в генеральній сукупності, дійсно, імовірно хлопці в середньому мають більше вільного часу ніж дівчата.</p>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>На візуалізації, хоч медіани виглядають доволі однаковими, можемо побачити наскільки ж є різним інтерквартильний розмах, що й впливає на середні значення.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># І перевірмо, чи є різниця між тим, як проводять вільний час дівчата й хлопці в старшій школі, а саме, чи є різниця в середній кількості прогулянок</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>goout_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(goout <span class="sc">~</span> sex, <span class="at">data =</span> df, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Тож наша вибірка має такі середні значення кількості прогулянок</p>
+<ul>
+<li>У дівчат: 3.028846</li>
+<li>У хлопців: 3.197861</li>
+</ul>
+<p>Вже можемо побачити, що різниця між середніми доволі невелика, але все ж подивимося на статистичну значущість цієї різниці</p>
+<p>p-value: 0.133</p>
+<p>Тому все ж ця різниця не має статистичної значущості й ми не можемо відхилити нульову гіпотезу, тобто все ж середня кількість прогулянок – <strong>однакова</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>І дійсно: медіани та інтерквартильний розмах виглядають <strong>ідентично</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Dalc <span class="sc">~</span> sex, <span class="at">data =</span> df, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>І трохи роздумів наостанок: а як саме витрачають вільний час хлопці? Тому я вирішила розглянути змінну, що оцінює розпиття алкоголю в будні дні серед старшокласників. Провівши t-тест, я запевнилася, що середні значення розпиття алкоголю дійсно відрізняються серед статей, як у вибірці, так і мають статистичну значущість за рахунок p-value &lt; <span class="math inline">\(5\%\)</span></p>
+<ul>
+<li>У дівчат: 1.254808</li>
+<li>У хлопців: 1.732620</li>
+</ul>
+<p>Та p-value: 1.696e-07</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Невеличкий графік кореляції між вільним часом та споживанням алкоголю в будні дні серед хлопців-старшокласників.</p>
+</section>
+<section id="підсумок" class="level2">
+<h2 class="anchored" data-anchor-id="підсумок">Підсумок</h2>
+<p>Під час дослідження було перевірено 3 гіпотези, власне, з такими висновками:</p>
+<ul>
+<li><p><strong>Кореляція між кількістю вільного часу та фінальними оцінками з математики</strong>.Кореляція виявилась дуже слабкою навіть у межах вибірки, а також статистично незначущою, тому відхиляти нульову гіпотезу немає підстав.</p></li>
+<li><p><strong>Різниця в кількості вільного часу між хлопцями та дівчатами</strong>. У межах вибірки різниця між середніми виявилася доволі помітною, а також <code>p-value &lt; 0.05</code> дало підстави відхилити нульову гіпотезу – все ж хлопці мають більше вільного часу, ніж дівчата, у генеральній сукупності.</p></li>
+<li><p><strong>Різниця в частоті прогулянок серед хлопців і дівчат</strong>. Різниця не була відносно великою ні в межах вибірки, ні виявилася статистично значущою для генеральної сукупності, оскільки <code>p-value &gt; 0.05</code>.</p></li>
+</ul>
 </section>
 </section>
 <section id="датасет-3-student-depression-dataset" class="level1">
@@ -675,25 +737,25 @@ mean in group F mean in group M
 <section id="робота-з-датасетом" class="level2">
 <h2 class="anchored" data-anchor-id="робота-з-датасетом">Робота з датасетом</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Student Depression Dataset.csv"</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Видалення пропущених значень для коректного аналізу</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(data)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Перетворення змінної "Gender" у факторний формат</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>Gender)</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Фільтрація даних для студентів із CGPA &gt; 8</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CGPA <span class="sc">&gt;</span> <span class="dv">8</span>)</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Впорядкування рівнів змінної Gender, щоб "Female" була першим рівнем</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>filtered_data<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(filtered_data<span class="sc">$</span>Gender, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Student Depression Dataset.csv"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Видалення пропущених значень для коректного аналізу</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(data)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Перетворення змінної "Gender" у факторний формат</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>Gender)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Фільтрація даних для студентів із CGPA &gt; 8</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CGPA <span class="sc">&gt;</span> <span class="dv">8</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Впорядкування рівнів змінної Gender, щоб "Female" була першим рівнем</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>filtered_data<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(filtered_data<span class="sc">$</span>Gender, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Гляньмо, що у нас вийшло</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(filtered_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Гляньмо, що у нас вийшло</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(filtered_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   12567 obs. of  18 variables:
  $ id                                   : int  2 32 52 56 59 62 100 106 145 161 ...
@@ -725,7 +787,7 @@ mean in group F mean in group M
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -749,10 +811,10 @@ mean in group F mean in group M
 <section id="проведення-t-тесту" class="level3">
 <h3 class="anchored" data-anchor-id="проведення-t-тесту">Проведення t-тесту</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Study.Satisfaction <span class="sc">~</span> Gender,</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> filtered_data,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">alternative =</span> <span class="st">"less"</span>,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Study.Satisfaction <span class="sc">~</span> Gender,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> filtered_data,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">alternative =</span> <span class="st">"less"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -767,8 +829,8 @@ mean in group F mean in group M
 </div>
 </section>
 </section>
-<section id="висновки" class="level2">
-<h2 class="anchored" data-anchor-id="висновки">Висновки</h2>
+<section id="висновки-1" class="level2">
+<h2 class="anchored" data-anchor-id="висновки-1">Висновки</h2>
 <ul>
 <li>t-тест показав, що немає значущої різниці у рівні задоволеності між студентами та студентками з високим CGPA.</li>
 <li>Візуалізація даних демонструє, що розподіл задоволеності у жінок більш варіативний.</li>
